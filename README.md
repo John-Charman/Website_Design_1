@@ -1,3 +1,3 @@
-# HTML-CSS-JS_Website-1
+# PHP-HTML-CSS-JS_Website
  
-A static website made up of HTML, CSS, and JavaScript. This was done purely through self-taught experience in all three languages.
+A website made up of PHP,HTML, CSS, and JavaScript. This was done purely through self-taught experience in all four languages.

@@ -4,51 +4,67 @@ body {
   font-family: Verdana, sans-serif;
   text-decoration-style: wavy;
 }
-#nav {
-  position: relative;
-  overflow: hidden;
-  background-color: rgb(255, 197, 111);
-}
-#nav a{
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 5px 16px;
-  text-decoration:none;
-  font-size: 31px;
-}
-#nav .nav-mid a {
-  float: none;
-  position: absolute;
-  width: 30%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#nav .nav-right {
-  float: right;
-}
-#nav a:hover , #nav a.active{
-  background-color: rgb(255, 224, 179);
-  color: black;
-}
-#nav .contact {
-  padding: 0px 16px;
-  }
-#nav .icon{
-  display: block;
-  width: auto;
-  height: 49px;
-  }
-#nav .nav-left .icon{
-  transform: scaleX(-1);
-  }
 #background {
-  background: no-repeat;
+  background: url("assets/backgroundmain.jpg") no-repeat;
   background-size: cover;
   background-attachment: scroll;
-  min-height: 100vh;
+  min-height: 140vh;
+
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+/*___________________________________________________
+Navbar Settings */
+#nav {
+position: relative;
+overflow: hidden;
+background-color: rgb(255, 197, 111);
+}
+#nav a{
+float: left;
+color: #f2f2f2;
+text-align: center;
+padding: 5px 16px;
+text-decoration:none;
+font-size: 31px;
+transition: background-color 0.5s, color 0.5s;
+}
+#nav #nav-mid a {
+float: none;
+position: absolute;
+width: 30%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+#nav #nav-right {
+float: right;
+}
+#nav a:hover , #nav a.active{
+background-color: rgb(255, 224, 179);
+color: black;
+}
+#nav .contact {
+padding: 0px 16px;
+}
+#nav #emailicon{
+display: block;
+width: auto;
+height: 49px;
+}
+#nav #nav-left #emailicon{
+transform: scaleX(-1);
+}
+/*___________________________________________________*/
 
 .logo {
   display: block;
@@ -72,6 +88,27 @@ p {
   text-align: center;
   width: 50%;
 }
+h1 {
+  text-align: center;
+  word-wrap: break-word;
+  margin-left:5%;
+  margin-right: auto;
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+  width: 90%;
+}
+h2 {
+  text-align: center;
+  margin-top: 0%;
+  padding-top: 5px;
+  margin-bottom: 0;
+  padding-bottom:5px;
+  margin-left: 5%;
+  margin-right: auto;
+  width: 90%;
+}
 
 .row {
   display: flex;
@@ -88,21 +125,21 @@ p {
   vertical-align: middle;
   width: 100%;
 }
-
-/* The Modal (background) */
+/*___________________________________________________
+The Modal (background) */
 .modal {
   display: none;
   position: fixed;
   text-align: center;
   z-index: 1;
-  padding: 30px 0px;
+  padding: 5px 0px;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background-color: rgb(0,0,0);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   user-select: none;
   -webkit-user-select: none;
 }
@@ -121,35 +158,108 @@ p {
 }
 /* the modal image */
 .modal img {
-  width: 100%;
-  height: auto;
-  max-height: 800px;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 90vh;
 
 }
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
+/*___________________________________________________*/
+/*___________________________________________________
+Slideshow container */
+.slideshow-container {
+  max-width: 100%;
   position: relative;
-  width: auto;
-  color: white;
-  margin-left: 10%;
-  margin-right: 10%;
-  bottom: 1.5vw;
-  font-weight: bold;
-  font-size: calc(50px + 2vw);
-}
-.next {
-  right: 0;
-}
-.prev:hover, .next:hover{
-  color: #999;
-  text-decoration: none;
+  margin: auto;
 }
 
+/* The dots/bullets/indicators */
+.dot-container {
+  display: table;
+  position: fixed;
+  width: 70%;
+  left:15%;
+  right:15%;
+  top:auto;
+  bottom:1%;
+  text-align:center;
+}
+
+.dot {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin: 0 2px;
+  background-color: rgb(150, 70, 0);
+  border-radius: 50%;
+  display:inline-block;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+.active, .dot:hover {
+  background-color: rgb(255, 149, 0);
+}
+/*___________________________________________________*/
+.slider {
+  width: 50%;
+  height: auto;
+  margin-left: 25%;
+  margin-right: auto;
+  display: flex;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.slide img {
+  max-height: 100%;
+  width: 50vw;
+}
+.slides {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.slides > div {
+  scroll-snap-align: start;
+  margin-right: 10px;
+  border-radius: 10px;
+  background: #eee;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.booksamplebuttons{
+  position: relative;
+  float:left;
+  margin-left:25%;
+  width: 50%;
+  bottom: 0;
+}
+.booksamplebuttons a{
+  cursor:pointer;
+  text-align:center;
+  text-decoration: none;
+  width:25%;
+  font-size: 50px;
+  padding:0px 10px;
+  border-radius: 10px;
+  color:white;
+  background:rgb(255, 149, 0);
+}
+/*___________________________________________________
+Contact Form*/
 form {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: calc(200px + 20vw);
   text-align: center;
 }
 
@@ -168,6 +278,7 @@ label {
   display: block;
   padding-bottom: 4px;
   font-size: 1.25em;
+  width:100%;
 }
 
 input, select, textarea {
@@ -175,7 +286,9 @@ input, select, textarea {
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-size: 1.25em;
-  width: 500px;
+  width:100%;
+  margin-right:auto;
+  margin-left: auto;
   padding: 8px;
 }
 
@@ -198,34 +311,39 @@ button:hover {
   background:rgb(255, 224, 179);
   color: black;
 }
-
-
+/*___________________________________________________*/
+/*_____________________________________________________________________
+Responsive Settings*/
 @media screen and (max-width: 900px) {
-  #nav .nav-right, #nav .nav-left {
-    width: 100%;
-  }
-  #nav .nav-right a, #nav .nav-left a {
-    position: relative;
-    text-align: right;
-    display: block;
-    width: 50%;
-  }
-  #nav .nav-left a{
-    float: right;
-  }
-  #nav .nav-mid a {
-    position: relative;
-    width: 100%;
-    display: block;
-    float: none;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
+ 
   #background {
     background-attachment: fixed;
     height: fit-content;
   }
+  /*___________________________________________________
+  Navbar Responsive Settings*/
+  #nav #nav-right, #nav #nav-left {
+    width: 100%;
+  }
+  #nav #nav-right a, #nav #nav-left a {
+      position: relative;
+      text-align: right;
+      display: block;
+      width: 50%;
+  }
+  #nav #nav-left a{
+      float: right;
+  }
+  #nav #nav-mid a {
+      position: relative;
+      width: 100%;
+      display: block;
+      float: none;
+      top: 0;
+      left: 0;
+      transform: none;
+  }
+  /*___________________________________________________*/
   .logo {
     width: 90%;
     padding-left: 0%;
@@ -242,6 +360,11 @@ button:hover {
     flex: 50%;
     max-width: 50%;
   }
+  .dot-container {
+    width: 100%;
+    left: 0%;
+    right:auto;
+  }
 }
 @media screen and (max-width: 600px) {
   .column {
@@ -249,3 +372,4 @@ button:hover {
     max-width: 100%;
   }
 }
+/*_____________________________________________________________________*/
