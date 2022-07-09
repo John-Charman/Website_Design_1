@@ -12,11 +12,12 @@
 </head>
 <body>
     <?php
-    include("header.php");
+    include("header.html");
     ?>
-    <div id = "background">
-        <h2>For business enquiries you can contact John at</h2>
-        <h1><a href="mailto:johnrcharman@gmail.com">JohnRCharman@gmail.com</a></h1>
+    <div class = 'flex-col'>
+        <h2 class = 'central'>For business enquiries you can contact John at</h2>
+        <h1 class = 'central'><a href="mailto:johnrcharman@gmail.com">JohnRCharman@gmail.com</a></h1>
     </div>
+
 </body>
 </html>
